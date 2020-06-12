@@ -4,12 +4,14 @@
     <button @click="handleClick('push')">跳转到parent</button>
     <button @click="handleClick('replace')">替换到parent</button>
     <b>{{ food }}</b>
+    <button @click="getInfo">请求数据</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import { getUserInfo } from '@/api/user'
 
 export default {
   name: 'Home',
@@ -50,7 +52,16 @@ export default {
       else if (type === 'replace') {
         this.$router.replace('/parent')
       }
+    },
+    async getInfo () {
+      const res = await getUserInfo()
+      console.log('res:', res)
     }
+    // getInfo () {
+    //   getUserInfo().then(res => {
+    //     console.log('res:' + res)
+    //   })
+    // }
   }
 }
 </script>
