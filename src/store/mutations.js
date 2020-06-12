@@ -5,6 +5,9 @@ const mutations = {
   },
   SET_APP_VERSION (state) {
     vue.set(state, 'appVersion', 'v3.0')
+  },
+  SET_STATE_VALUE (state, value) {
+    state.stateValue = value
   }
 }
 

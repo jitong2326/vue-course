@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a-input v-model="inputValue" />
-    <p>{{ inputValue }} -> last letter is {{ inputValueLastLetter }}</p>
+    <a-input v-model="stateValue" />
+    <p>{{ stateValue }} -> last letter is {{ inputValueLastLetter }}</p>
     <!-- <a-show :content="inputValue"/> -->
     <p>appName: {{ appName }} appNameWithVersion: {{ appNameWithVersion }}</p>
     <p>userName: {{ userName }} first letter is {{ firstLetter }}</p>
@@ -44,6 +44,14 @@ export default {
       'appNameWithVersion',
       'firstLetter'
     ]),
+    stateValue: {
+      get () {
+        return this.$store.state.stateValue
+      },
+      set (val) {
+        this.SET_STATE_VALUE(val)
+      }
+    },
     // ...mapState([
     //   'appName'
     // ])
@@ -64,7 +72,8 @@ export default {
     ...mapMutations([
       'SET_APP_NAME',
       'SET_APP_VERSION',
-      'SET_USER_NAME'
+      'SET_USER_NAME',
+      'SET_STATE_VALUE'
     ]),
     ...mapActions([
       'updateAppName'

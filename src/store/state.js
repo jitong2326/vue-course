@@ -1,4 +1,5 @@
 const state = {
-  appName: 'vue-course'
+  appName: 'vue-course',
+  stateValue: 'abc'
 }
 export default state
