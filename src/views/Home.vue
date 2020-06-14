@@ -4,7 +4,9 @@
     <button @click="handleClick('push')">跳转到parent</button>
     <button @click="handleClick('replace')">替换到parent</button>
     <b>{{ food }}</b>
-    <button @click="getInfo">请求数据</button>
+    <!-- <button @click="getInfo">请求数据</button> -->
+    <button @click="getInfo" :style="{ background: bgColor }">请求数据</button>
+    <img :src="url">
   </div>
 </template>
 
@@ -17,6 +19,12 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  data () {
+    return {
+      url: '',
+      bgColor: ''
+    }
   },
   props: {
     food: {
@@ -55,7 +63,9 @@ export default {
     },
     async getInfo () {
       const res = await getUserInfo()
-      console.log('res:', res)
+      console.log('res: ', res.data)
+      this.url = res.data.img
+      this.bgColor = res.data.color
     }
     // getInfo () {
     //   getUserInfo().then(res => {
